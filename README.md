@@ -1,5 +1,5 @@
-Heroku buildpack: Node.js with grunt support
-============================================
+Heroku buildpack: Node.js with grunt support using compass and zurb-foundation
+==============================================================================
 
 Supported Grunt versions: 0.3 and 0.4.
 See the Grunt [migration guide](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) if you are upgrading from 0.3.
@@ -15,11 +15,11 @@ Usage
 
 Create a new app with this buildpack:
 
-    heroku create myapp --buildpack heroku config:add BUILDPACK_URL=https://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git
+    heroku create myapp --buildpack heroku config:add BUILDPACK_URL=https://github.com/mpisanko/heroku-buildpack-nodejs-grunt-foundation.git
 
 Or add this buildpack to your current app:
 
-    heroku config:add BUILDPACK_URL=heroku config:add BUILDPACK_URL=https://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git
+    heroku config:add BUILDPACK_URL=https://github.com/mpisanko/heroku-buildpack-nodejs-grunt-foundation.git
 
 Create your Node.js app and add a Gruntfile named  `Gruntfile.js` (or `Gruntfile.coffee` if you want to use CoffeeScript, or `grunt.js` if you are using Grunt 0.3) with a `heroku` task:
 
