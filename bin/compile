@@ -166,11 +166,6 @@ INCLUDE_PATH="$VENDORED_NODE/include"
 export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"
 
-# install bower
-echo "-----> Installing bower"
-cd $BUILD_DIR
-HOME="$BUILD_DIR" $BUILD_DIR/node_modules/bower/bin/bower install
-
 # install compass
 echo "-----> Installing Compass"
 export GEM_HOME=$BUILD_DIR/.gem/ruby/1.9.1
@@ -184,6 +179,14 @@ HOME=$BUILD_DIR gem install zurb-foundation
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
 run_npm "install --production"
+# install bower components
+if [ ! -f "$BUILD_DIR/node_modules/bower" ]; then
+  echo "--> installing bower itself"
+  run_npm "install bower"
+fi
+echo "-----> Installing bower components"
+HOME="$BUILD_DIR" $BUILD_DIR/node_modules/bower/bin/bower install
+
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
