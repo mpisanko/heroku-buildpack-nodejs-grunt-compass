@@ -110,7 +110,7 @@ declare -A engine_defaults
 declare -A engine_requests
 
 engine_defaults["node"]="0.10.x"
-engine_defaults["npm"]="1.2.x"
+engine_defaults["npm"]="1.3.x"
 
 engine_versions["node"]=$(manifest_versions "nodejs")
 engine_requests["node"]=$(package_engine_version "node")
@@ -165,6 +165,11 @@ PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
 INCLUDE_PATH="$VENDORED_NODE/include"
 export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"
+
+# install bower
+echo "-----> Installing bower"
+cd $BUILD_DIR
+HOME="$BUILD_DIR" $BUILD_DIR/node_modules/bower/bin/bower install
 
 # install compass
 echo "-----> Installing Compass"
